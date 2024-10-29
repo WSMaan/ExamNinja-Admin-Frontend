@@ -7,21 +7,13 @@ import AdminDashboard from './components/AdminDashboard';
 import ProtectedRoute from './components/ProtectedRoute'; // Import your ProtectedRoute
 import { ThemeProvider } from '@mui/material/styles';
 import theme from './theme';
+import AppRoutes from './routes/AppRoutes';
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <Router>
-        <Routes>
-          <Route path="/" element={<Navigate to="/login" />} />
-          <Route path="/login" element={<Login />} />
-          <Route 
-            path="/admin-dashboard" 
-            element={
-              <ProtectedRoute element={<AdminDashboard />} />
-            } 
-          />
-        </Routes>
+        <AppRoutes/>
       </Router>
     </ThemeProvider>
   );

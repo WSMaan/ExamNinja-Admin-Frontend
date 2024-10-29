@@ -18,6 +18,14 @@ const AdminDashboard = () => {
       <Button 
         variant="contained" 
         color="primary" 
+        sx={{ marginTop: '2rem' }}
+        onClick={() => navigate('/admin/upload')}
+      >
+        Go to Upload Portal
+      </Button>
+      <Button 
+        variant="contained" 
+        color="primary" 
         onClick={handleLogout} 
         sx={{ marginTop: '2rem' }}
       >
