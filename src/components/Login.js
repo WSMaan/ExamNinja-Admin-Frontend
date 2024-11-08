@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Container, TextField, Button, Typography, Paper } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import apiService from '../services/apiService'; // Import the apiService
+import apiService from '../services/apiService';
+import * as Yup from 'yup';
+import { Formik } from 'formik'; // Import the apiService
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -9,6 +11,14 @@ const Login = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
 
+  const validationSchema = Yup.object({
+    username: Yup.string().required('Username is required'),
+    password: Yup.string()
+      .required('Password is required')
+      .test('no-space', 'Password cannot contain only spaces', value => {
+        return value && value.trim() !== ''; // Ensure password is not just spaces
+      }),
+  });
   const handleLogin = async (e) => {
     e.preventDefault();
   
