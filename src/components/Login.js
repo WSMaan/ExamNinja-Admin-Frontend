@@ -21,10 +21,11 @@ const Login = () => {
 
   const handleLogin = async (values) => {
     const trimmedUsername = values.username.trim();
+    const trimmedpassword = values.password.trim();
     const password = values.password; // Get password from values
   
     try {
-      const response = await apiService.login(trimmedUsername, password);
+      const response = await apiService.login(trimmedUsername, trimmedpassword);
       if (response.status === 'success') {
         localStorage.setItem('isLoggedIn', 'true'); // Set login status
         navigate('/admin-dashboard');
